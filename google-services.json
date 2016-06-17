@@ -1,0 +1,50 @@
+{
+  "project_info": {
+    "project_number": "418778624849",
+    "firebase_url": "https://login-ca0de.firebaseio.com",
+    "project_id": "login-ca0de",
+    "storage_bucket": "login-ca0de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418778624849:android:0bba6c9a1daded2d",
+        "android_client_info": {
+          "package_name": "com.example.maxi.login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "418778624849-3kjf38vj17eolj4k21f31k35phahtul5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.maxi.login",
+            "certificate_hash": "88016C3F1E6D53C0994E0B54BB082D3722D8024E"
+          }
+        },
+        {
+          "client_id": "418778624849-d9rld9g87qkko34v4mqa65clplemtfer.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpteJD7Oc_uUfI81T7A57n8b4S6ibCMkM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
