@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.maxi.login.activity.FragmentInteractorInterface;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -14,16 +15,19 @@ public class UserAndPassLogin extends FirebaseLoginManager implements FirebaseLo
     private String email;
     private String password;
     private Activity activity;
+    FragmentInteractorInterface interactorInterface;
 
-    public UserAndPassLogin(Activity activity, String email, String password) {
+    public UserAndPassLogin(FragmentInteractorInterface interactorInterface, String email, String password) {
         super();
         this.email = email;
         this.password = password;
-        this.activity = activity;
+        this.activity = interactorInterface.getActivityInstance();
+        this.interactorInterface = interactorInterface;
     }
 
     @Override
     public void signIn() {
+        interactorInterface.hideButton();
         auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(activity, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -33,8 +37,9 @@ public class UserAndPassLogin extends FirebaseLoginManager implements FirebaseLo
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithEmail", task.getException());
                             Toast.makeText(activity, email + " not loged", Toast.LENGTH_SHORT).show();
+                            interactorInterface.showButton();
                         } else {
-                            Toast.makeText(activity, email + " loged", Toast.LENGTH_SHORT).show();
+                            startMainActivity(activity);
                         }
                     }
                 });
@@ -42,6 +47,7 @@ public class UserAndPassLogin extends FirebaseLoginManager implements FirebaseLo
 
     @Override
     public void signUp() {
+        interactorInterface.hideButton();
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(activity, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -51,8 +57,9 @@ public class UserAndPassLogin extends FirebaseLoginManager implements FirebaseLo
                         if (!task.isSuccessful()) {
                             Log.d(TAG, "createUserWithEmail:notComplete:");
                             Toast.makeText(activity, email + " not created", Toast.LENGTH_SHORT).show();
+                            interactorInterface.showButton();
                         } else {
-                            Toast.makeText(activity, email + " loged", Toast.LENGTH_SHORT).show();
+                            startMainActivity(activity);
                         }
                     }
                 });

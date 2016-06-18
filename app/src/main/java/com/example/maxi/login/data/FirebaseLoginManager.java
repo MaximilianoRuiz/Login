@@ -1,8 +1,12 @@
 package com.example.maxi.login.data;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.example.maxi.login.activity.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -35,5 +39,11 @@ public class FirebaseLoginManager {
             }
         };
         return mAuthListener;
+    }
+
+    protected void startMainActivity(Activity activity) {
+        Intent intent = new Intent(activity, MainActivity.class);
+        activity.startActivity(intent);
+        activity.finish();
     }
 }
