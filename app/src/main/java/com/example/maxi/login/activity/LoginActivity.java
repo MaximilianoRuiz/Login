@@ -1,6 +1,8 @@
 package com.example.maxi.login.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -19,16 +21,19 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnSingUp;
 
     private FirebaseLoginManager firebaseManager;
+    private Fragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        fragment = new SignInFragment();
+
         if (savedInstanceState == null) {
             getFragmentManager()
                     .beginTransaction()
-                    .add(R.id.container, new SignInFragment())
+                    .add(R.id.container, fragment)
                     .commit();
         }
 
@@ -62,6 +67,8 @@ public class LoginActivity extends AppCompatActivity {
 
         mShowingBack = true;
 
+        fragment = new SignUpFragment();
+
         getFragmentManager()
                 .beginTransaction()
                 .setCustomAnimations(
@@ -69,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                         R.animator.card_flip_right_out,
                         R.animator.card_flip_left_in,
                         R.animator.card_flip_left_out)
-                .replace(R.id.container, new SignUpFragment())
+                .replace(R.id.container, fragment)
                 .addToBackStack(null)
                 .commit();
     }
@@ -99,5 +106,11 @@ public class LoginActivity extends AppCompatActivity {
                 btnSingUp.setEnabled(false);
             }
         });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        fragment.onActivityResult(requestCode, resultCode, data);
     }
 }

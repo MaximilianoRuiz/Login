@@ -12,7 +12,6 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.maxi.login.R;
-import com.example.maxi.login.activity.FragmentInteractorInterface;
 import com.example.maxi.login.data.UserAndPassLogin;
 
 public class SignUpFragment extends Fragment implements FragmentInteractorInterface {

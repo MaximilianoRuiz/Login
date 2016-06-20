@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.maxi.login.activity.FragmentInteractorInterface;
+import com.example.maxi.login.fragment.FragmentInteractorInterface;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

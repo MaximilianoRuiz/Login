@@ -10,7 +10,7 @@ import com.example.maxi.login.activity.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class FirebaseLoginManager {
+public class FirebaseLoginManager implements FirebaseLoginInterface {
 
     public static String TAG = "FirebaseLoginManager";
 
@@ -45,5 +45,17 @@ public class FirebaseLoginManager {
         Intent intent = new Intent(activity, MainActivity.class);
         activity.startActivity(intent);
         activity.finish();
+    }
+
+    @Override
+    public void signIn() {
+    }
+
+    @Override
+    public void signUp() {
+    }
+
+    @Override
+    public void activityResult(int requestCode, int resultCode, Intent data) {
     }
 }

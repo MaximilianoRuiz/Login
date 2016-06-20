@@ -1,4 +1,4 @@
-package com.example.maxi.login.activity;
+package com.example.maxi.login.fragment;
 
 import android.app.Activity;
 

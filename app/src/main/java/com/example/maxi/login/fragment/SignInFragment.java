@@ -2,6 +2,7 @@ package com.example.maxi.login.fragment;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +13,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.maxi.login.R;
-import com.example.maxi.login.activity.FragmentInteractorInterface;
 import com.example.maxi.login.data.FacebookLogin;
+import com.example.maxi.login.data.FirebaseLoginManager;
 import com.example.maxi.login.data.GmailLogin;
 import com.example.maxi.login.data.UserAndPassLogin;
 
@@ -27,6 +28,7 @@ public class SignInFragment extends Fragment implements FragmentInteractorInterf
     private ProgressBar pbEmailAndPassLogin;
 
     private FragmentInteractorInterface iInteractor;
+    private FirebaseLoginManager loginManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,8 +62,8 @@ public class SignInFragment extends Fragment implements FragmentInteractorInterf
                 String email = etEmailLogin.getText().toString();
                 String password = etPasswordLogin.getText().toString();
                 if(!"".equals(email) && !"".equals(password)) {
-                    UserAndPassLogin login = new UserAndPassLogin(iInteractor, email, password);
-                    login.signIn();
+                    loginManager = new UserAndPassLogin(iInteractor, email, password);
+                    loginManager.signIn();
                 } else {
                     Toast.makeText(getActivity(), "Empty fields", Toast.LENGTH_SHORT).show();
                 }
@@ -71,16 +73,16 @@ public class SignInFragment extends Fragment implements FragmentInteractorInterf
         btnFacebookLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FacebookLogin login = new FacebookLogin(getActivity());
-                login.signIn();
+                loginManager = new FacebookLogin(getActivity());
+                loginManager.signIn();
             }
         });
 
         btGmailLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GmailLogin login = new GmailLogin(getActivity());
-                login.signIn();
+                loginManager = new GmailLogin(getActivity());
+                loginManager.signIn();
             }
         });
     }
@@ -100,5 +102,11 @@ public class SignInFragment extends Fragment implements FragmentInteractorInterf
     public void showButton() {
         pbEmailAndPassLogin.setVisibility(View.GONE);
         btnEmailAndPassLogin.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        loginManager.activityResult(requestCode, resultCode, data);
     }
 }
