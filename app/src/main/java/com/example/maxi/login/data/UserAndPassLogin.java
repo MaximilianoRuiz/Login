@@ -15,7 +15,7 @@ public class UserAndPassLogin extends FirebaseLoginManager implements FirebaseLo
     private String email;
     private String password;
     private Activity activity;
-    FragmentInteractorInterface interactorInterface;
+    private FragmentInteractorInterface interactorInterface;
 
     public UserAndPassLogin(FragmentInteractorInterface interactorInterface, String email, String password) {
         super();

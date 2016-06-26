@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.maxi.login.fragment.FragmentInteractorInterface;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -24,11 +25,12 @@ public class GmailLogin extends FirebaseLoginManager implements FirebaseLoginInt
     private static final int RC_SIGN_IN = 9001;
 
     private GoogleApiClient mGoogleApiClient;
-
+    private FragmentInteractorInterface interactorInterface;
     private Activity activity;
 
-    public GmailLogin(Activity activity) {
-        this.activity = activity;
+    public GmailLogin(FragmentInteractorInterface interactorInterface) {
+        this.activity = interactorInterface.getActivityInstance();
+        this.interactorInterface = interactorInterface;
 
         init();
     }

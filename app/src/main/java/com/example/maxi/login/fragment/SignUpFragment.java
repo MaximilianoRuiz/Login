@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.maxi.login.R;
 import com.example.maxi.login.data.UserAndPassLogin;
+import com.facebook.login.widget.LoginButton;
 
 public class SignUpFragment extends Fragment implements FragmentInteractorInterface {
 
@@ -82,5 +83,10 @@ public class SignUpFragment extends Fragment implements FragmentInteractorInterf
     public void showButton() {
         pbEmailAndPassSignUp.setVisibility(View.GONE);
         btnSignUp.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public LoginButton getLoginButton() {
+        return null;
     }
 }

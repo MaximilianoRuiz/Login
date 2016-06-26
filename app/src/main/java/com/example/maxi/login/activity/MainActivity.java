@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.example.maxi.login.R;
 import com.example.maxi.login.data.FirebaseLoginManager;
+import com.facebook.login.LoginManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 firebaseManager.getAuth().signOut();
+                LoginManager.getInstance().logOut();
                 finish();
                 Intent intent = new Intent(getBaseContext(), LoginActivity.class);
                 startActivity(intent);

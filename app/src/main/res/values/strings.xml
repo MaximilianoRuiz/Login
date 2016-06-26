@@ -3,5 +3,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_main">Main</string>
 
-    <string name="default_web_client_id2">418778624849-3kjf38vj17eolj4k21f31k35phahtul5.apps.googleusercontent.com</string>
+    <string name="google_web_client_id"></string>
+    <string name="facebook_app_id">955913934505873</string>
+    <string name="redireccionamiento_de_OAuth">https://login-ca0de.firebaseapp.com/__/auth/handler</string>
 </resources>
