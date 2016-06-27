@@ -1,7 +1,7 @@
 package com.example.maxi.login.data;
 
 import android.app.Activity;
-import android.content.Context;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -17,6 +17,7 @@ public class FirebaseLoginManager implements FirebaseLoginInterface {
     protected FirebaseAuth auth;
     protected FirebaseAuth.AuthStateListener mAuthListener;
 
+    private ProgressDialog progressDialog;
 
     public FirebaseLoginManager() {
         auth = FirebaseAuth.getInstance();
@@ -58,4 +59,14 @@ public class FirebaseLoginManager implements FirebaseLoginInterface {
     @Override
     public void activityResult(int requestCode, int resultCode, Intent data) {
     }
+
+    protected void showDialog(Activity activity) {
+        progressDialog = ProgressDialog.show(activity, "Please wait", "Loading...", true);
+        progressDialog.setCancelable(true);
+    }
+
+    protected void dismissDialog() {
+        progressDialog.dismiss();
+    }
+
 }

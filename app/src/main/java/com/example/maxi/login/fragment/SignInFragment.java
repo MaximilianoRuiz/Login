@@ -95,18 +95,6 @@ public class SignInFragment extends Fragment implements FragmentInteractorInterf
     }
 
     @Override
-    public void hideButton() {
-        pbEmailAndPassLogin.setVisibility(View.VISIBLE);
-        btnEmailAndPassLogin.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void showButton() {
-        pbEmailAndPassLogin.setVisibility(View.GONE);
-        btnEmailAndPassLogin.setVisibility(View.VISIBLE);
-    }
-
-    @Override
     public LoginButton getLoginButton() {
         return btnFacebookLogin;
     }

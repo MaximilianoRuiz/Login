@@ -7,7 +7,5 @@ import com.facebook.login.widget.LoginButton;
 public interface FragmentInteractorInterface {
 
     Activity getActivityInstance();
-    void hideButton();
-    void showButton();
     LoginButton getLoginButton();
 }
