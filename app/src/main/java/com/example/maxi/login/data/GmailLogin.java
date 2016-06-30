@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.maxi.login.R;
 import com.example.maxi.login.fragment.FragmentInteractorInterface;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -37,7 +38,7 @@ public class GmailLogin extends FirebaseLoginManager implements FirebaseLoginInt
 
     private void init() {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("418778624849-d9rld9g87qkko34v4mqa65clplemtfer.apps.googleusercontent.com")
+                .requestIdToken(activity.getResources().getString(R.string.google_web_client_id))
                 .requestEmail()
                 .build();
 
@@ -61,6 +62,7 @@ public class GmailLogin extends FirebaseLoginManager implements FirebaseLoginInt
 
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithCredential", task.getException());
+                            dismissDialog();
                             Toast.makeText(activity, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
@@ -76,23 +78,23 @@ public class GmailLogin extends FirebaseLoginManager implements FirebaseLoginInt
     }
 
     @Override
-    public void signUp() {
-        Toast.makeText(activity, "Working on it", Toast.LENGTH_SHORT).show();
-    }
+    public void signUp() {}
 
     @Override
     public void activityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == RC_SIGN_IN) {
+
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if (result.isSuccess()) {
-                // Google Sign In was successful, authenticate with Firebase
+                showDialog(activity);
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
             } else {
-                // Google Sign In failed, update UI appropriately
-                // [START_EXCLUDE]
-                // [END_EXCLUDE]
+                dismissDialog();
             }
+        } else {
+            Toast.makeText(activity, "Something went wrong.",
+                    Toast.LENGTH_SHORT).show();
         }
     }
 

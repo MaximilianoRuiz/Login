@@ -37,13 +37,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:hint="Welcome!" />
+                android:hint="@string/et_hint_welcome" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnLogOut"
-                android:text="Log Out"/>
+                android:text="@string/btn_log_out"/>
 
         </android.support.design.widget.TextInputLayout>
 

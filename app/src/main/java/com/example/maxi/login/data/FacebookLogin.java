@@ -2,10 +2,12 @@ package com.example.maxi.login.data;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.maxi.login.R;
 import com.example.maxi.login.fragment.FragmentInteractorInterface;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -25,11 +27,13 @@ public class FacebookLogin extends FirebaseLoginManager implements FirebaseLogin
     private Activity activity;
     private FragmentInteractorInterface interactorInterface;
     private CallbackManager mCallbackManager;
+    private Resources resources;
 
     public FacebookLogin(FragmentInteractorInterface interactorInterface) {
         this.activity = interactorInterface.getActivityInstance();
         this.activity = interactorInterface.getActivityInstance();
         this.interactorInterface = interactorInterface;
+        this.resources = activity.getResources();
 
         init();
     }
@@ -51,7 +55,8 @@ public class FacebookLogin extends FirebaseLoginManager implements FirebaseLogin
                         startMainActivity(activity);
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithCredential", task.getException());
-                            Toast.makeText(activity, "Authentication failed.",
+                            dismissDialog();
+                            Toast.makeText(activity, resources.getText(R.string.authentication_failed),
                                     Toast.LENGTH_SHORT).show();
                         }
 
@@ -73,24 +78,23 @@ public class FacebookLogin extends FirebaseLoginManager implements FirebaseLogin
             @Override
             public void onCancel() {
                 Log.d(TAG, "facebook:onCancel");
-                // ...
+                dismissDialog();
             }
 
             @Override
             public void onError(FacebookException error) {
                 Log.d(TAG, "facebook:onError", error);
-                // ...
+                dismissDialog();
             }
         });
     }
 
     @Override
-    public void signUp() {
-        Toast.makeText(activity, "Working on it", Toast.LENGTH_SHORT).show();
-    }
+    public void signUp() {}
 
     @Override
     public void activityResult(int requestCode, int resultCode, Intent data) {
+        showDialog(activity);
         mCallbackManager.onActivityResult(requestCode, resultCode, data);
     }
 }

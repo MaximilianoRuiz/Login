@@ -1,0 +1,22 @@
+<resources>
+    <!-- Layouts Titles-->
+    <string name="title_activity_main">Main</string>
+
+
+    <!-- Widgets Texts-->
+    <string name="action_settings">Settings</string>
+    <string name="btn_sign_in">Ingresar</string>
+    <string name="btn_sign_up">Registrarse</string>
+    <string name="et_hint_welcome">¡Bienvenido!</string>
+    <string name="btn_log_out">Cerrar Sesion</string>
+    <string name="et_hint_email">Email</string>
+    <string name="et_hint_password">Contraseña</string>
+    <string name="btn_login">Login</string>
+    <string name="tv_or">O</string>
+    <string name="et_hint_repeat_password">Repetir Contraseña</string>
+    <string name="authentication_failed">Falla al autenticar</string>
+    <string name="progress_dialog_title">Por favor esperar</string>
+    <string name="progress_dialog_message">Cargando ...</string>
+
+
+</resources>

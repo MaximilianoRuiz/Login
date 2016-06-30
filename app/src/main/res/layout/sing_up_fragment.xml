@@ -6,7 +6,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="E-mail"
+        android:hint="@string/et_hint_email"
         android:id="@+id/etEmailSignUp"
         android:gravity="center_horizontal"/>
 
@@ -17,7 +17,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
+        android:hint="@string/et_hint_password"
         android:id="@+id/etPasswordSignUp"
         android:inputType="textPassword"
         android:gravity="center_horizontal"/>
@@ -25,7 +25,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Repeat Password"
+        android:hint="@string/et_hint_repeat_password"
         android:id="@+id/etPasswordSignUpRepeat"
         android:inputType="textPassword"
         android:gravity="center_horizontal"/>
@@ -41,6 +41,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnSignUp"
-        android:text="Accept"/>
+        android:text="@string/btn_accept"/>
 
 </LinearLayout>

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.example.maxi.login.R;
 import com.example.maxi.login.activity.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -61,7 +62,10 @@ public class FirebaseLoginManager implements FirebaseLoginInterface {
     }
 
     protected void showDialog(Activity activity) {
-        progressDialog = ProgressDialog.show(activity, "Please wait", "Loading...", true);
+        progressDialog = ProgressDialog.show(activity,
+                activity.getResources().getText(R.string.progress_dialog_title),
+                activity.getResources().getText(R.string.progress_dialog_message),
+                true);
         progressDialog.setCancelable(true);
     }
 
