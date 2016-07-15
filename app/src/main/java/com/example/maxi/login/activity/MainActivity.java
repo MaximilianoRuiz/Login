@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.maxi.login.R;
 import com.example.maxi.login.data.FirebaseLoginManager;
@@ -13,7 +14,13 @@ import com.facebook.login.LoginManager;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnLogOut;
+    private TextView tvUserFirebaseEmail, tvUserFirebaseID;
+    private Button btnLogOut;
+
+    private Bundle bundle;
+
+    private String userFirebaseEmail;
+    private String userFirebaseID;
 
     private FirebaseLoginManager firebaseManager;
 
@@ -26,13 +33,22 @@ public class MainActivity extends AppCompatActivity {
 
         firebaseManager = new FirebaseLoginManager();
 
+        bundle = getIntent().getExtras();
+        userFirebaseEmail = bundle.getString(FirebaseLoginManager.USER_FIREBASE_EMAIL);
+        userFirebaseID = bundle.getString(FirebaseLoginManager.USER_FIREBASE_ID);
+
         initWidgets();
 
         addListeners();
     }
 
     private void initWidgets() {
+        tvUserFirebaseEmail = (TextView) findViewById(R.id.tvUserFirebaseEmail);
+        tvUserFirebaseID = (TextView) findViewById(R.id.tvUserFirebaseID);
         btnLogOut = (Button) findViewById(R.id.btnLogOut);
+
+        tvUserFirebaseEmail.setText(userFirebaseEmail);
+        tvUserFirebaseID.setText(userFirebaseID);
     }
 
     private void addListeners() {

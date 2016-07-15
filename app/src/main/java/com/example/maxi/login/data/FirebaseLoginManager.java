@@ -14,6 +14,8 @@ import com.google.firebase.auth.FirebaseUser;
 public class FirebaseLoginManager implements FirebaseLoginInterface {
 
     public static String TAG = "FirebaseLoginManager";
+    public static final String USER_FIREBASE_ID = "userFirebaseID";
+    public static final String USER_FIREBASE_EMAIL = "userFirebaseEmail";
 
     protected FirebaseAuth auth;
     protected FirebaseAuth.AuthStateListener mAuthListener;
@@ -45,6 +47,8 @@ public class FirebaseLoginManager implements FirebaseLoginInterface {
 
     protected void startMainActivity(Activity activity) {
         Intent intent = new Intent(activity, MainActivity.class);
+        intent.putExtra(USER_FIREBASE_EMAIL, auth.getCurrentUser().getEmail());
+        intent.putExtra(USER_FIREBASE_ID, auth.getCurrentUser().getUid());
         activity.startActivity(intent);
         activity.finish();
     }
