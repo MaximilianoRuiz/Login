@@ -40,6 +40,7 @@ public class UserAndPassLogin extends FirebaseLoginManager implements FirebaseLo
                             dismissDialog();
                         } else {
                             startMainActivity(activity);
+                            registerUser();
                         }
                     }
                 });
@@ -60,6 +61,7 @@ public class UserAndPassLogin extends FirebaseLoginManager implements FirebaseLo
                             dismissDialog();
                         } else {
                             startMainActivity(activity);
+                            registerUser();
                         }
                     }
                 });
